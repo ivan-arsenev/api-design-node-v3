@@ -6,7 +6,9 @@ const router = Router()
 // /api/item
 router
   .route('/')
-  .get(controllers.getOne)
+  .get((req, res) => {
+    res.status(404).send({ message: 'not found' }) // or .json
+  })
   .post(controllers.createOne)
 
 // /api/item/:id
