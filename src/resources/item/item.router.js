@@ -6,11 +6,10 @@ const router = Router()
 // /api/item
 router
   .route('/')
-  .get((req, res) => {
-    res.status(404).send({ message: 'not found' }) // or .json
-  })
+  .get(controllers.getOne)
   .post(controllers.createOne)
 
+// res.status(404).send({ message: 'not found' }) // or .json
 // /api/item/:id
 router
   .route('/:id')

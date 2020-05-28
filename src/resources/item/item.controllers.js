@@ -1,24 +1,25 @@
+import { crudControllers } from '../../utils/crud'
 import { Item } from './item.model'
-import mongoose from 'mongoose'
-import { connect } from '../../utils/db'
 
-const run = async () => {
-  await connect('mongodb://localhost:27017/api-design-test')
+export default crudControllers(Item)
 
-  const item = await Item.create({
-    name: 'Clean up',
-    createdBy: mongoose.Types.ObjectId(),
-    list: mongoose.Types.ObjectId()
-  })
+// const run = async () => {
+//   await connect('mongodb://localhost:27017/api-design-test')
 
-  const updated = await Item.findByIdAndUpdate(
-    item._id,
-    { name: 'eat' },
-    { new: true }
-  ).exec()
+//   const item = await Item.create({
+//     name: 'Clean up',
+//     createdBy: mongoose.Types.ObjectId(),
+//     list: mongoose.Types.ObjectId()
+//   })
 
-  console.log(updated)
+//   const updated = await Item.findByIdAndUpdate(
+//     item._id,
+//     { name: 'eat' },
+//     { new: true }
+//   ).exec()
 
-  // console.log(await Item.findById(item._id).exec())
-}
-run()
+//   console.log(updated)
+
+//   // console.log(await Item.findById(item._id).exec())
+// }
+// run()
